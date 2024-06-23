@@ -4,13 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Domain.Users
+namespace Application.Shared.Contracts
 {
-    internal class User
+    internal class UserDTO
     {
         public int Id { get; set; }
         public string? Name { get; set; }
-        public string? Phone { get; set; }
-        public DateTime BirthDay { get; set; }
     }
 }
