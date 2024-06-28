@@ -2,9 +2,10 @@
 {
     internal class Program
     {
-        static void Main()
+        static async Task Main()
         {
-            Console.WriteLine("Hello, World!");
+            Bot bot = new Bot();
+            await bot.Run();
         }
     }
 }

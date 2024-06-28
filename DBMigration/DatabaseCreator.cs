@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using EntityFramework;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
 using System;
 using System.Collections.Generic;
@@ -10,18 +11,13 @@ namespace DBMigration
 {
     internal class DatabaseCreator : DbContext
     {
-        private const string ServerName = "(localdb)\\mssqllocaldb";
-        private const string DatabaseName = "EnglishNinja";
-        private const string ConnectionString = $"Server={ServerName};Database={DatabaseName};Trusted_Connection=True;";
-
         public DatabaseCreator()
         {
+            Database.EnsureDeleted();
             Database.EnsureCreated();
-        }
+        } 
 
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            optionsBuilder.UseSqlServer(ConnectionString);
-        }
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) => 
+            optionsBuilder.UseSqlServer(EnglishNinjaConfig.ConnectionString);
     }
 }
